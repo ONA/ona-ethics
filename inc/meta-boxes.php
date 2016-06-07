@@ -1,4 +1,4 @@
-<?
+<?php
 
 // Add meta boxes to post types
 
@@ -71,7 +71,7 @@ function question_form_callback( $post ) {
 	} )( jQuery );
 	</script>
 
-	<?
+	<?php
 	echo '<p>Enter the ID of the question that should be asked next:</p>';
 
 	// The below field isn't needed anymore, but I'm just hiding it for now
@@ -120,7 +120,7 @@ function question_form_save_meta_box_data( $post_id ) {
 			unset($_POST['question_options'][$k]);
 		}
 	}
-	
+
 	$information = sanitize_text_field( $_POST['information'] );
 	$next = sanitize_text_field( $_POST['next'] );
 
@@ -138,6 +138,6 @@ function question_form_save_meta_box_data( $post_id ) {
 add_action( 'save_post', 'question_form_save_meta_box_data' );
 
 
-
+?>
 
 

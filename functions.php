@@ -1,4 +1,4 @@
-<?
+<?php
 
 // Load the theme specific files
 include get_template_directory() . '/inc/post-types.php';
@@ -243,4 +243,4 @@ function fn_theme_options( $wp_customize ) {
 }
 add_action( 'customize_register' , 'fn_theme_options' );
 
-
+?>

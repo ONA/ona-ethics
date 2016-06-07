@@ -3,12 +3,12 @@
 <html <?php language_attributes(); ?>>
 
 	<head>
-		
+
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 
 		<title><?php wp_title('|', true, 'right'); ?><?php echo get_bloginfo( 'name' );?></title>
-		 
+
 		<?php wp_head(); ?>
 
 		<?php if ( !is_user_logged_in() && $_SERVER['SERVER_NAME'] == 'ethics.journalists.org') { ?>	
@@ -24,7 +24,7 @@
 		<?php } ?>
 
 	</head>
-	
+
 	<body <?php body_class(); ?>>
 
 		<nav>
@@ -45,4 +45,3 @@
 		</nav>
 
 		<div class="container">
-	

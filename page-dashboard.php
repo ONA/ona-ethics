@@ -1,24 +1,24 @@
-<? 
+<?php
 // Redirect user if not logged in
 if ( !is_user_logged_in() ){
 	wp_redirect( home_url().'/signin/' );
 	exit;
-} 
+}
 
-$sections = ''; 
+$sections = '';
 $first_name = get_user_meta(get_current_user_id(), 'first_name', true);
 
-get_header(); 
+get_header();
 global $wp;
 $steps = $wp->steps;
-$categories = $wp->categories; 
+$categories = $wp->categories;
 //print_r($wp->categories); ?>
 
 <div id="question" class="main-column float">
-	<h1><? _e('Your Dashboard');?></h1>
-	<? 
+	<h1><?php _e('Your Dashboard');?></h1>
+	<?php
 	$all_parents = -1; // Compensate for the Nature of your journalism child
-	$all_answered = -1;
+	$all_answered = 0;
 	/*echo '<pre>';
 	print_r($steps);
 	echo '</pre>';*/
@@ -49,7 +49,7 @@ $categories = $wp->categories;
 				$sections .= '</div>';
 				$sections .= '</div>';
 				$answered_total = 0;
-				$steps_total = 0;  
+				$steps_total = 0;
 			} else {
 				// This is the first parent
 				$answered_total = 0;
@@ -58,17 +58,17 @@ $categories = $wp->categories;
 			}
 			$lastLink = get_permalink($key);
 			$lastName = $categories[$val['parent']]['title'];
-		} 
+		}
 
 		if ( $val['parent'] && $val['level'] == 1 ) {
 			if ($answered){ // There is data for this question
 				$answered_total++; // Just for this category; reset later
 				$all_answered++;  // For __ of __
-			} 
+			}
 			$steps_total++; // Just for this category; reset later
 			$all_parents++; // For __ of __
 		}
-	} 
+	}
 	// Echo the last one, because it won't be triggered above
 	$sections .= '<div class="section">';
 	$sections .= '<h4><a href="'.$lastLink.'">'.$lastName.'</a> ('.$answered_total.'/'.$steps_total.')</h4>';
@@ -76,22 +76,22 @@ $categories = $wp->categories;
 	$percent = (($answered_total/$steps_total)*100);
 	$sections .= '<div class="segment'.($percent==100?' answered':'').'" style="width:'.$percent.'%"></div>';
 	$sections .= '</div>';
-	$sections .= '</div>'; 
+	$sections .= '</div>';
 
 
 	if ($all_answered == 0) { ?>
-		<p><? printf( __( 'Hello%s. You have completed <b>%d</b> of <b>%d</b> sections. Start building your code using the sections below.'), ($first_name ? ', '.$first_name : ''), $all_answered, $all_parents);?></p>
-	<? } else { ?>
-		<p><? printf( __( 'Hello%s. You have completed <b>%d</b> of <b>%d</b> sections. Continue building your code using the sections below.'), ($first_name ? ', '.$first_name : ''), $all_answered, $all_parents);?></p>
-	<? } ?>
-	<? if ($next) {
+		<p><?php printf( __( 'Hello%s. You have completed <b>%d</b> of <b>%d</b> sections. Start building your code using the sections below.'), ($first_name ? ', '.$first_name : ''), $all_answered, $all_parents);?></p>
+	<?php } else { ?>
+		<p><?php printf( __( 'Hello%s. You have completed <b>%d</b> of <b>%d</b> sections. Continue building your code using the sections below.'), ($first_name ? ', '.$first_name : ''), $all_answered, $all_parents);?></p>
+	<?php } ?>
+	<?php if ($next) {
 		echo '<a class="btn dashboard" href="'.$next['link'].'"><b>NEXT:</b> '.$next['name'].'</a>';
 	} ?>
 	<div class="sections">
-		<? echo $sections; ?>
+		<?php echo $sections; ?>
 	</div>
 
-	
+
 </div>
 
 <?php get_sidebar('question'); ?>

@@ -90,11 +90,10 @@ html {
 	color: #54ACC9;
 }
 .sidebar ul.parent li {
-	margin: 8px 0;
 	list-style: disc;
 }
 .sidebar .parent > div {
-	padding: 10px 0;
+	padding: 5px 0;
 	margin-left: -40px;
 	color: #727272;
 	font-style: italic;
@@ -174,6 +173,7 @@ li.current > a {
 .main-column li a {
 	color: #157c9e;
 	text-decoration: none;
+	font-weight: bold;
 }
 
 /* Questions */
@@ -384,6 +384,7 @@ nav li {
 	float:left;
 	list-style:none;
 	margin-right:15px;
+	font-weight: bold;
 }
 nav a.btn,
 nav a.btn:hover {

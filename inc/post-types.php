@@ -1,4 +1,4 @@
-<?
+<?php
 
 // Add a post type for questions
 
@@ -51,3 +51,5 @@ function question_post_type() {
 	);
 }
 add_action( 'init', 'question_post_type' );
+
+?>

@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 
 <div id="main-logo"></div>
-<? if ( is_user_logged_in() ){ ?>
+<?php if ( is_user_logged_in() ){ ?>
 <a href="q/fundamentals/" class="btn">Start here</a>
-<? } else { ?>
+<?php } else { ?>
 <a href="signup/" class="btn">Start here</a>
-<? } ?>
+<?php } ?>
 
 <h2><?php echo get_theme_mod('ethics_tagline', ''); ?></h2>
 

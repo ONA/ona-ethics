@@ -1,14 +1,14 @@
-<? 
+<?php
 // Redirect user if not logged in
 if ( !is_user_logged_in() ){
 	wp_redirect( home_url().'/signin/' );
 	exit;
-} 
+}
 
-$sections = ''; 
+$sections = '';
 
-get_header(); 
-$steps = $wp->steps; 
+get_header();
+$steps = $wp->steps;
 $categories = $wp->categories; ?>
 
 <div class="main-column" role="content">
@@ -18,6 +18,8 @@ $categories = $wp->categories; ?>
 	<p><a href="print/" target="_blank"><span class="demo-icon icon-print"></span> Print</a> <!--| <span class="demo-icon icon-mail"></span> Email--></p>
 
 	<div class="code yourcode">
+
+		<h1>Journalism Fundamentals</h1>
 
 		<h2>Telling the truth</h2>
 		<ul>
@@ -51,8 +53,8 @@ $categories = $wp->categories; ?>
 	</div>
 
 	<div class="code yourcode">
-		<? 
-		foreach ($steps as $key => $val){ 
+		<?php
+		foreach ($steps as $key => $val){
 
 			if ( $val['name'] == "Fundamentals") continue;
 
@@ -76,28 +78,28 @@ $categories = $wp->categories; ?>
 					}
 				}
 
-				if ($notfirst) { 
+				if ($notfirst) {
 					echo '</ul>';
 				} else {
 					$notfirst = true;
 				}
 				echo '<h2>'.($val['name']=='Ethical Choices' ? 'Nature of Your Journalism' : $val['name']).'</h2>';
 				echo '<ul>';
-			} 
+			}
 
 			if ($question_data[0] != 'na' && $question_data != 'na' ) {
 				if ( $question_data[0] == 'skipped' || $question_data == 'skipped' ) {
 					//echo '<p>You skipped over the introduction to this section. Please <a href="'.get_permalink($key).'">read through the overview</a>.</p>';
 					continue;
 				}
-				if ( is_array($question_data) ){ 
+				if ( is_array($question_data) ){
 					foreach ($question_data as $ethic){
 						if ($ethic != '')
 							echo '<li class="editable" data-href="'.get_permalink($key).'">'.$ethic.'</li>';
 					}
 				}
 			}
-		} 
+		}
 
 		echo '</ul>';
 		// This <a> button moves around with jQuery ?>
